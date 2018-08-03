@@ -42,7 +42,7 @@ const paths = {
       `To start, I need your email so I can setup your user credentials.`
     )
     path(b).reset()
-    path(b).text(patterns.email, paths.email)
+    path(b).text(patterns.email, paths.framework)
     path(b).text(patterns.exit, paths.exit)
     path(b).catchAll((b) => b.respond(
       `Sorry, that doesn't look like a valid email address.`,
@@ -51,8 +51,15 @@ const paths = {
   },
   framework: async(b) => {
     await b.respond(
-      `Perfect. Now, which bot framework you are using?  Do you use `bbot`, `botpress`, 'botkit', 'hubot', 'rasa', or 'none'?'.`
+      "Perfect. Now, which bot framework you are using?  Do you use `bbot`, `botpress`, `botkit`, `hubot`, `rasa`, or `none`?"
     )
+    path(b).text(patterns.framework, paths.email)
+    path(b).text(patterns.exit, paths.exit)
+    path(b).catchAll((b) => b.respond(
+      `Sorry, I don't know how to setup for that framework.`,
+      `Please try again, or reply \`quit\` if you want to try later.`
+    ))
+    
   },
   email: async (b) => {
     const address = b.match[0]
