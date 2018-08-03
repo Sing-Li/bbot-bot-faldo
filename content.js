@@ -17,8 +17,8 @@ const patterns = {
   confirm: /^confirm$/i,
   start: /^(start|new|begin)$/i,
   exit: /^\b(quit|exit|cancel)\b$/i,
-
 }
+
 
 /**
  * Path callbacks object keeps listener handling DRY and allows routing multiple
@@ -50,13 +50,14 @@ const paths = {
     ))
   },
   framework: async(b) => {
+    const frmwrk = b.match[0]
     await b.respond(
       "Perfect. Now, which bot framework you are using?  Do you use `bbot`, `botpress`, `botkit`, `hubot`, `rasa`, or `none`?"
     )
     path(b).text(patterns.framework, paths.email)
     path(b).text(patterns.exit, paths.exit)
     path(b).catchAll((b) => b.respond(
-      `Sorry, I don't know how to setup for that framework.`,
+      `Sorry, I don't know how to setup for ' + frmwkr + '.',
       `Please try again, or reply \`quit\` if you want to try later.`
     ))
     
