@@ -57,7 +57,7 @@ const paths = {
     path(b).text(patterns.framework, paths.email)
     path(b).text(patterns.exit, paths.exit)
     path(b).catchAll((b) => b.respond(
-      `Sorry, I don't know how to setup for ' + frmwkr + '.',
+      `Sorry, I don't know how to setup for this framework.`,
       `Please try again, or reply \`quit\` if you want to try later.`
     ))
     
