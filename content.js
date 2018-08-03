@@ -9,13 +9,15 @@ const path = (b) => scene.path(b.message.user.id)
 const patterns = {
   welcome: /^\b(hi|hello|hey)\b$/i,
   email: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+  frameworks: /^\b(bbot|botkit|botpress|hubot|rasa|none)\b$/i, 
   username: /^(\w*)$/i,
   password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
   set: /^set$/i,
   skip: /^skip$/i,
   confirm: /^confirm$/i,
   start: /^(start|new|begin)$/i,
-  exit: /^\b(quit|exit|cancel)\b$/i
+  exit: /^\b(quit|exit|cancel)\b$/i,
+
 }
 
 /**
@@ -46,6 +48,11 @@ const paths = {
       `Sorry, that doesn't look like a valid email address.`,
       `Please try again, or reply \`quit\` if you want to try later.`
     ))
+  },
+  framework: async(b) => {
+    await b.respond(
+      `Perfect. Now, which bot framework you are using?  Do you use `bbot`, `botpress`, 'botkit', 'hubot', 'rasa', or 'none'?'.`
+    )
   },
   email: async (b) => {
     const address = b.match[0]
