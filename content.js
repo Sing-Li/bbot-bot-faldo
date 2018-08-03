@@ -1,8 +1,6 @@
 const scene = require('./scene')
 const credentials = require('./credentials')
-
-// Place holder for mocking async callbacks
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+const admin = require('./admin')
 
 // Shortcut to path handlers for user ID
 const path = (b) => scene.path(b.message.user.id)
@@ -131,9 +129,13 @@ ROCKETCHAT_ROOM="${room.name}"\`\`\``,
   },
   finish: async (b) => {
     await b.respond(`Amazing, I'll just set that up...`)
-    await delay(2500)
-    // @todo replace with sending `credentials(b.message.user.id).toObject()` to account creation method.
-    await b.respond(`Done and done, check your email. Happy chatbotting! :tada:`)
+    try {
+      await admin.createAccounts(credentials(b.message.user.id).toObject())
+      await b.respond(`Done and done, check your email. Happy chatbotting! :tada:`)
+    } catch (err) {
+      await b.respond(`Oh no :see_no_evil: I ${err.message}`)
+      await b.respond(`Sorry, but we'll have to try later, reply \`start\` when you want to start again.`)
+    }
     scene.exit(b.message.user.id)
   },
   exit: async (b) => {
