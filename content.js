@@ -50,14 +50,15 @@ const paths = {
     ))
   },
   framework: async(b) => {
-    const frmwrk = b.match[0]
+    
     await b.respond(
       "Perfect. Now, which bot framework you are using?  Do you use `bbot`, `botpress`, `botkit`, `hubot`, `rasa`, or `none`?"
     )
+    path(b).reset()
     path(b).text(patterns.frameworks, paths.email)
     path(b).text(patterns.exit, paths.exit)
     path(b).catchAll((b) => b.respond(
-      `Sorry, I don't know how to setup for ${frmwrk}.`, 
+      `Sorry, I don't know how to setup for ${b.match[0]}.`, 
       `Please try again, or reply \`quit\` if you want to try later.`
     ))
     
