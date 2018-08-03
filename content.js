@@ -59,7 +59,7 @@ const paths = {
     path(b).text(patterns.exit, paths.exit)
     path(b).catchAll((b) => {
       b.respond(
-      `Sorry, I don't know how to setup for ${b.message.msg}.`, 
+      `Sorry, I don't know how to setup for framework named ${b.match}.`, 
       `Please try again, or reply \`quit\` if you want to try later.`)
     })
     
