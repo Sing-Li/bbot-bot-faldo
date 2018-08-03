@@ -57,10 +57,12 @@ const paths = {
     path(b).reset()
     path(b).text(patterns.frameworks, paths.email)
     path(b).text(patterns.exit, paths.exit)
-    path(b).catchAll((b) => b.respond(
-      `Sorry, I don't know how to setup for ${b.match[0]}.`, 
-      `Please try again, or reply \`quit\` if you want to try later.`
-    ))
+    path(b).catchAll((b) => {
+      const frmwrk = b.match[0]
+      b.respond(
+      `Sorry, I don't know how to setup for ${b.message.msg}.`, 
+      `Please try again, or reply \`quit\` if you want to try later.`)
+    })
     
   },
   email: async (b) => {
