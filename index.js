@@ -1,54 +1,22 @@
 const bot = require('bbot')
+const scene = require('./scene')
+const { paths, patterns } = require('./content')
 
-const conversation = {
-  // sub-sets of listeners assigned to a user ID
-  current: {},
-
-  // add a "global" listener that routes message to conversation branches
-  setup: () => {
-    bot.hearMiddleware((b, next, done) => {
-      const user = b.message.user
-      if (conversation.engaged(user)) {
-        new bot.Thoughts(b, conversation.current[user.id]``).start('receive').then(done)
-      } else {
-        next()
-      }
-    })
-  },
-
-  // check if a user ID has an open conversation branch
-  engaged: (user) => Object.keys(conversation.current).indexOf(user.id) > -1,
-
-  // add listeners to a conversation branch for a user
-  branch: (user) => {
-    if (conversation.engaged(user)) return conversation.current[user.id]
-    conversation.current[user.id] = new bot.Listeners()
-    return conversation.current[user.id]
-  },
-
-  // close a conversation branch with a user
-  exit: (user) => delete conversation.current[user.id]
-}
-
-const bits = [{
-  id: 'welcome',
-  send: [
-    'Hi I\'m Faldo, I manage the bot accounts for the Rocket.Chat bots playground.',
-    'To start, I need your email so I can setup your user credentials'
-  ],
-  callback: (b) => {
-    conversation.branch(b.message.user).text(/.*/, (b) => b.respond('you in a branch'))
-  }
-}]
-
+/**
+ * Some usage requires waiting on bot load, so it's best to wrap in async.
+ * Here we initialise the bot and our custom conversation branching (scene).
+ * Adding "global" listeners that our outside any scene's context.
+ * It will enter the 'welcome' path on room enter, or when greeted.
+ */
 async function start () {
   await bot.load()
-  // conversation.setup()
-  for (let bit of bits) bot.setupBit(bit)
-  bot.listenEnter('welcome')
-  bot.listenCustom(() => true, 'welcome')
-  // bot.listenText(/^\b(hi|hello|hey)\b$/i, () => bot.logger.debug(JSON.stringify(bot.bits.welcome)))
-  await bot.start()
+  scene.setup(bot)
+  bot.global.enter(paths.welcome)
+  bot.global.text(patterns.welcome, paths.welcome)
+  bot.global.text(patterns.start, paths.start)
+  await bot.start().catch((err) => {
+    console.error(err)
+  })
 }
 
 start()
