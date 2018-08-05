@@ -43,11 +43,10 @@ async function createAccounts (credentials) {
   }
 }
 
-let projects = { 'bbot': { 'name':     },
-                 'hubot' : { 'name':    },
-                 'botkit' : {'name' :    } }
+let projects = { 'bbot': { 'name': 'bbot-bot-faldo'    },
+                 'hubot' : { 'name':  'rocketchat-hubot-rocketchat-boilerplate'  },
+                 'botkit' : {'name' :  'sing-li-botkit-starter-rocketchat-1'  } }
                             
-
 
 function getRemix(framework, envvars) {
   const proj = { 'name': projects[framework].name }

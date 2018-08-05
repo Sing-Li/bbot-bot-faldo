@@ -151,7 +151,14 @@ ROCKETCHAT_ROOM="${room.name}"\`\`\``,
     await b.respond(`Amazing, I'll just set that up...`)
     try {
       await admin.createAccounts(credentials(b.message.user.id).toObject())
-      await b.respond(`Done and done, check your email. Happy chatbotting! :tada:`)
+
+      await b.respond(`Done and done, check your email.`)
+      await b.respond(`Click [this link]() to code your bot right now:`)
+      
+      await b.respond(`Click [this link]('https://bots.rocket.chat') and login with your credentials to test your bot on Rocket.Chat's BOTs Playground:`)
+      
+      
+      await b.responde(`Happy chatbotting! :tada:`)
     } catch (err) {
       await b.respond(`Oh no :see_no_evil: I ${err.message}`)
       await b.respond(`Sorry, but we'll have to try later, reply \`start\` when you want to start again.`)
