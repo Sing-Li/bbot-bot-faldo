@@ -153,7 +153,16 @@ ROCKETCHAT_ROOM="${room.name}"\`\`\``,
       await admin.createAccounts(credentials(b.message.user.id).toObject())
 
       await b.respond(`Done and done, check your email.`)
-      await b.respond(`Click [**this glitch remix link**]() to code your bot right now:`)
+      const cred = credentials(b.message.user.id)
+      const envvars = {
+        'ROCKETCHAT_URL' : 'https://bots.rocket.chat',
+        'ROCKETCHAT_USER' : cred.bot.username,
+        'ROCKETCHAT_PASSWORD' : cred.bot.passowrd,
+        'ROCKETCHAT_ROOM' : cred.room.name,
+        'ROCKETCHAT_USE_SSL' : true
+      }
+      const url = admin.getRemix(cred.bot.framework)
+      await b.respond(`Click [**this glitch remix link**](${url}) to code your bot right now:`)
       
       await b.respond(`Click [**this bots playground link**](https://bots.rocket.chat)  (login with your credentials) and test your bot on Rocket.Chat's BOTs Playground:`)
       
