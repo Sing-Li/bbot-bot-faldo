@@ -164,8 +164,9 @@ ROCKETCHAT_ROOM="${room.name}"\`\`\``,
       }
       const remixurl = admin.getRemix(cred.bot.framework, envvars)
       b.bot.logger.info(remixurl)
-      await b.respond(`Click [**this glitch remix link**](${remixurl}) to code your bot right now:`)
-      await b.respond(`Click [**this bots playground link**](${botsplaygroundurl})  (login with your credentials) and test your bot on Rocket.Chat's BOTs Playground:`)
+      const roomurl = botsplaygroundurl + '/group/' + cred.room.name
+      await b.respond(`I have created a bot project for you. Click [**this glitch remix link**](${remixurl}) to code your bot right now:`)
+      await b.respond(`You can also click [**this Rocket.Chat bots playground link**](${roomurl})  (login with your credentials) and test your bot on Rocket.Chat's BOTs Playground:`)
       await b.respond(`Happy chatbotting! :tada:`)
     } catch (err) {
       await b.respond(`Oh no :see_no_evil: I ${err.message}`)
