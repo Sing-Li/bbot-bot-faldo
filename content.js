@@ -153,9 +153,9 @@ ROCKETCHAT_ROOM="${room.name}"\`\`\``,
       await admin.createAccounts(credentials(b.message.user.id).toObject())
 
       await b.respond(`Done and done, check your email.`)
-      await b.respond(`Click [this link]() to code your bot right now:`)
+      await b.respond(`Click [**this glitch remix link**]() to code your bot right now:`)
       
-      await b.respond(`Click [this link]('https://bots.rocket.chat') and login with your credentials to test your bot on Rocket.Chat's BOTs Playground:`)
+      await b.respond(`Click [**this bots playground link**](https://bots.rocket.chat)  (login with your credentials) and test your bot on Rocket.Chat's BOTs Playground:`)
       
       
       await b.responde(`Happy chatbotting! :tada:`)
