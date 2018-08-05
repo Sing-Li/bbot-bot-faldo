@@ -17,12 +17,19 @@ async function createAccounts (credentials) {
       const passwords = [];
       passwords[0] = bot.password;
       passwords[1] = user.password;
-      const result = await tp.createaccounts({
+      const result = {}
+      /*
+      result = await tp.createaccounts({
          e: user.email,
          g: room.name,
          u: user.username,
          p: passwords
       })
+      */
+      bBot.logger.info(`[admin] calling with USER ${JSON.stringify(user)}`)
+      bBot.logger.info(`[admin] calling with BOT ${JSON.stringify(bot)}`)
+      bBot.logger.info(`[admin] calling with ROOM ${JSON.stringify(room)}`)
+      bBot.logger.info(`[admin] calling with PASSOWRDS ${JSON.stringify(passwords)}`)
       bBot.logger.info(`[admin] createAccounts returned ${JSON.stringify(result)}`)
     } catch (err) {
       bBot.logger.error(`[admin] createAccounts failed: ${err.message}`)
