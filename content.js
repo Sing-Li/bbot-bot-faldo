@@ -42,7 +42,7 @@ const paths = {
       `To start, I need your email so I can setup your user credentials.`
     )
     path(b).reset()
-    path(b).text(patterns.email, paths.framework)
+    path(b).text(patterns.email, paths.email)
     path(b).text(patterns.exit, paths.exit)
     path(b).catchAll((b) => b.respond(
       `Sorry, that doesn't look like a valid email address.`,
@@ -117,7 +117,7 @@ const paths = {
     await paths.confirm(b)
   },
   skip: async (b) => {
-    b.bot.logger.info(`[faldo] setting password from input.`)
+    b.bot.logger.info(`[faldo] taking skip option.`)
     const credential = credentials(b.message.user.id)
     credential.generateUsername()
     credential.generatePassword()
