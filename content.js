@@ -136,6 +136,7 @@ const paths = {
 ROCKETCHAT_USERNAME="${bot.username}"
 ROCKETCHAT_PASSWORD="${bot.password}"
 ROCKETCHAT_ROOM="${room.name}"\`\`\``,
+      `Your will code your bot using the ${credential.bot.framework} framework.`,
       `Reply \`confirm\` to go ahead and I'll email you the details.`
     )
     path(b).reset()

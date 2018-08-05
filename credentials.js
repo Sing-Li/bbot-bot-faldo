@@ -2,6 +2,8 @@ const addr = require('email-addresses')
 const randomWords = require('random-words')
 const generator = require('generate-password')
 
+const botUserPostfix = 'bot'
+
 /**
  * Using class for submitted details allows the credentials instance to be
  * accumulated from a sequence of prompts, performing field validation and even
@@ -24,7 +26,7 @@ class Credentials {
 
   setUsername (name) {
     this.user.username = name + Math.random().toString(36).substring(4, 7)
-    this.bot.username = this.user.username + 'Bot'
+    this.bot.username = this.user.username + botUserPostfix
     return this
   }
 

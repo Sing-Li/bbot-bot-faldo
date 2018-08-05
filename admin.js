@@ -17,15 +17,14 @@ async function createAccounts (credentials) {
       const passwords = [];
       passwords[0] = bot.password;
       passwords[1] = user.password;
-      const result = {}
-      /*
+      let result = {}
+      
       result = await tp.createaccounts({
          e: user.email,
          g: room.name,
          u: user.username,
          p: passwords
       })
-      */
       bBot.logger.info(`[admin] calling with USER ${JSON.stringify(user)}`)
       bBot.logger.info(`[admin] calling with BOT ${JSON.stringify(bot)}`)
       bBot.logger.info(`[admin] calling with ROOM ${JSON.stringify(room)}`)
