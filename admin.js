@@ -43,8 +43,15 @@ async function createAccounts (credentials) {
   }
 }
 
-function getRemix(proj, envvars) {
-  return gm.getRemixURL(proj, envvars);
+let projects = { 'bbot': { 'name':     },
+                 'hubot' : { 'name':    },
+                 'botkit' : {'name' :    } }
+                            
+
+
+function getRemix(framework, envvars) {
+  const proj = { 'name': projects[framework].name }
+  return gm.getRemixURL(proj, envvars)
 }
 module.exports = {
   createAccounts,
