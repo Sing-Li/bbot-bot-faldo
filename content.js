@@ -161,7 +161,7 @@ ROCKETCHAT_ROOM="${room.name}"\`\`\``,
         'ROCKETCHAT_ROOM' : cred.room.name,
         'ROCKETCHAT_USE_SSL' : true
       }
-      const url = admin.getRemix(cred.bot.framework)
+      const url = admin.getRemix(cred.bot.framework, envvars)
       await b.respond(`Click [**this glitch remix link**](${url}) to code your bot right now:`)
       
       await b.respond(`Click [**this bots playground link**](https://bots.rocket.chat)  (login with your credentials) and test your bot on Rocket.Chat's BOTs Playground:`)
