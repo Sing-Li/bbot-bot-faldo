@@ -49,13 +49,15 @@ const paths = {
       `Please try again, or reply \`quit\` if you want to try later.`
     ))
   },
-  framework: async(b) => {
-    
+  email: async(b) => {
+    const address = b.match[0]
+    b.bot.logger.info(`[faldo] creating new credentials for email ${address}`)
+    credentials(b.message.user.id).setEmail(address)    
     await b.respond(
       "Perfect. Now, which bot framework you are using?  Do you use `bbot`, `botpress`, `botkit`, `hubot`, `rasa`, or `none`?"
     )
     path(b).reset()
-    path(b).text(patterns.frameworks, paths.email)
+    path(b).text(patterns.frameworks, paths.framework)
     path(b).text(patterns.exit, paths.exit)
     path(b).catchAll((b) => {
       b.respond(
@@ -64,10 +66,10 @@ const paths = {
     })
     
   },
-  email: async (b) => {
-    const address = b.match[0]
-    b.bot.logger.info(`[faldo] creating new credentials for email ${address}`)
-    credentials(b.message.user.id).setEmail(address)
+  framework: async (b) => {
+    const framework = b.match[0]
+    b.bot.logger.info(`[faldo] storing framework information  ${framework}`)
+    credentials(b.message.user.id).setFramework(framework)
     await b.respond(
       `Thanks, I'll send you the credentials when we're done. :thumbsup:`,
       `Would you like to set other attributes, or skip to use generated?`,
@@ -115,6 +117,7 @@ const paths = {
     await paths.confirm(b)
   },
   skip: async (b) => {
+    b.bot.logger.info(`[faldo] setting password from input.`)
     const credential = credentials(b.message.user.id)
     credential.generateUsername()
     credential.generatePassword()

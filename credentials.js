@@ -33,6 +33,12 @@ class Credentials {
     this.bot.password = password
     return this
   }
+  
+  setFramework (framework) {
+    this.user.framework = framework
+    this.bot.framework = framework
+    return this
+  }
 
   setRoom (name) {
     this.room.name = name
