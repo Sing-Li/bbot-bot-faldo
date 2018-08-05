@@ -159,7 +159,7 @@ ROCKETCHAT_ROOM="${room.name}"\`\`\``,
       const envvars = {
         'ROCKETCHAT_URL' : botsplaygroundurl,
         'ROCKETCHAT_USER' : cred.bot.username,
-        'ROCKETCHAT_PASSWORD' : cred.bot.passowrd,
+        'ROCKETCHAT_PASSWORD' : cred.bot.password,
         'ROCKETCHAT_ROOM' : cred.room.name,
         'ROCKETCHAT_USE_SSL' : true
       }
