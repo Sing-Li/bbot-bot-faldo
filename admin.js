@@ -10,7 +10,11 @@ async function createAccounts (credentials) {
     bBot.logger.info(`[admin] calling createAccounts...`)
     try {
       if (user.username.match(/fail/)) throw new Error('forced fail for demo')
-      // actually do stuff...
+            // turbproxy createaccounts method signature
+            // {e: email, g: group, u: uname, p: passwords}
+            // uname is basename for two users:  uname + 'bot'  and uname 
+            // passwords is an array of 2 passwords, first one for bot
+      const passwds: 
       const result = await tp.createaccounts({
          e: user.email,
          g: room.name,
