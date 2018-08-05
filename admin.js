@@ -1,8 +1,7 @@
 const bBot = require('bbot')
-// const tp = require('turbproxy')
+const tp = require('turbproxy')
+const gm = require('glitchmagic')
 
-// Place holder for mocking async callbacks
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 /** Setup accounts for user and bot, first creating room for joining them in. */
 async function createAccounts (credentials) {
@@ -10,16 +9,14 @@ async function createAccounts (credentials) {
   if (!!user && !!bot && !!room) {
     bBot.logger.info(`[admin] calling createAccounts...`)
     try {
-      // pretend to do stuff...
-      const result = await delay(2500).then(() => { return { success: true } })
       if (user.username.match(/fail/)) throw new Error('forced fail for demo')
       // actually do stuff...
-      // const result = await tp.createaccounts({
-      //   e: user.email,
-      //   g: room.name,
-      //   u: user.username,
-      //   p: user.password
-      // })
+      const result = await tp.createaccounts({
+         e: user.email,
+         g: room.name,
+         u: user.username,
+         p: user.password
+      })
       bBot.logger.info(`[admin] createAccounts returned ${JSON.stringify(result)}`)
     } catch (err) {
       bBot.logger.error(`[admin] createAccounts failed: ${err.message}`)
@@ -33,6 +30,10 @@ async function createAccounts (credentials) {
   }
 }
 
+function getRemix(proj, envvars) {
+  return gm.getRemixURL(proj, envvars);
+}
 module.exports = {
-  createAccounts
+  createAccounts,
+  getRemix
 }

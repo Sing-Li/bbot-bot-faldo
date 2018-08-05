@@ -18,7 +18,8 @@
     "email-addresses": "^3.0.1",
     "generate-password": "^1.4.0",
     "random-words": "^1.1.0",
-    "turbproxy": "^0.0.2"
+    "turbproxy": "^0.0.2",
+    "glitchmagic": "^0.0.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",

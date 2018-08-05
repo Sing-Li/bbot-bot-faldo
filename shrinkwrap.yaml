@@ -2,6 +2,7 @@ dependencies:
   bbot: 0.1.1
   email-addresses: 3.0.1
   generate-password: 1.4.0
+  glitchmagic: 0.0.1
   random-words: 1.1.0
   turbproxy: 0.0.2
 devDependencies:
@@ -585,6 +586,12 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-Ikpp5scV3MSYxY39ymh45ZLEecsTdv/Xj2CaQfI8RLMuwi7XvjX9H/fhraiSuU+C5w5NTDu4ZU72xNiZnurBPg==
+  /decode-uri-component/0.2.0:
+    dev: false
+    engines:
+      node: '>=0.10'
+    resolution:
+      integrity: sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
   /deep-eql/3.0.1:
     dependencies:
       type-detect: 4.0.8
@@ -1144,6 +1151,12 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-jpQ9E1jcN1VQVOy+LtsFqhdO3hQ=
+  /glitchmagic/0.0.1:
+    dependencies:
+      query-string: 6.1.0
+    dev: false
+    resolution:
+      integrity: sha512-LeRlGHrhIBG/vFtR4zradAQswHLSJZfVWofgaZ5SMtxKtz3GwTXcPjEU00OqOt4Um7zKyu1DxSEX6kRGROC1kQ==
   /glob-parent/3.1.0:
     dependencies:
       is-glob: 3.1.0
@@ -2092,6 +2105,15 @@ packages:
       teleport: '>=0.2.0'
     resolution:
       integrity: sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
+  /query-string/6.1.0:
+    dependencies:
+      decode-uri-component: 0.2.0
+      strict-uri-encode: 2.0.0
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-pNB/Gr8SA8ff8KpUFM36o/WFAlthgaThka5bV19AD9PNTH20Pwq5Zxodif2YyHwrctp6SkL4GqlOot0qR/wGaw==
   /random-words/1.1.0:
     dev: false
     resolution:
@@ -2343,6 +2365,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-1cdSgl5TZ+eG944Y5EXqIjoVWVI=
+  /strict-uri-encode/2.0.0:
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha1-ucczDHBChi9rFC3CdLvMWGbONUY=
   /string-width/1.0.2:
     dependencies:
       code-point-at: 1.1.0
@@ -2709,6 +2737,7 @@ specifiers:
   chai: ^4.1.2
   email-addresses: ^3.0.1
   generate-password: ^1.4.0
+  glitchmagic: ^0.0.1
   mocha: ^5.2.0
   random-words: ^1.1.0
   standard: ^11.0.1
