@@ -51,7 +51,20 @@ function getRemix(framework, envvars) {
   const proj = { 'name': projects[framework].name }
   return gm.getRemixURL(proj, envvars)
 }
+
+async function nukeBots() {
+      bBot.logger.info(`[admin] arrg! nuke all BOTs...`)
+      try {
+        await tp.resetplayground()
+        
+      } catch (err) {
+        bBot.logger.error(`[admin] nuke bots failed error: ${err.message}`)
+        throw new Error('cannot cleanup playground due to server error.')
+      }
+}
+
 module.exports = {
   createAccounts,
-  getRemix
+  getRemix,
+  nukeBots
 }

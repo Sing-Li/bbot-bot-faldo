@@ -200,16 +200,20 @@ ROCKETCHAT_ROOM="${room.name}"\`\`\``,
     path(b).text(patterns.exit, paths.exit)
     path(b).text(patterns.activation, paths.activation)
     path(b).catchAll((b) => b.respond(
-      `Awesome :slight_smile:`
-      scene.exit(b.message.user.id);
-    ))
+      `Awesome :slight_smile:`))
+    scene.exit(b.message.user.id);
+    
   },
   activation: async (b) => {
     await b.respond(
       `Administration backdoor activated.`,
       `Please await BOT cleanup....`
     )
-    
+    await admin.nukeBots()
+    await b.respond(
+      `Exiting backdoor! Just say \`hi\` when you want to try again. :wave:`
+    )
+    scene.exit(b.message.user.id)
   },
   exit: async (b) => {
     await b.respond(
@@ -218,5 +222,6 @@ ROCKETCHAT_ROOM="${room.name}"\`\`\``,
     scene.exit(b.message.user.id)
   }
 }
+
 
 module.exports = { patterns, paths }
