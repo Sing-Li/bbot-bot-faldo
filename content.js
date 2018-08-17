@@ -209,6 +209,7 @@ ROCKETCHAT_ROOM="${room.name}"\`\`\``,
       `Administration backdoor activated.`,
       `Please await BOT cleanup....`
     )
+    
   },
   exit: async (b) => {
     await b.respond(
