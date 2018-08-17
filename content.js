@@ -17,6 +17,8 @@ const patterns = {
   confirm: /confirm$/i,
   start: /(start|new|begin)$/i,
   exit: /\b(quit|exit|cancel)\b$/i,
+  backdoor: /\bfaldo\sloves\salexa\b$/i,
+  activation: /\bgabriel\sengel\b$/i
 }
 
 /**
@@ -41,8 +43,9 @@ const paths = {
       `To start, I need your email so I can setup your user credentials.`
     )
     path(b).reset()
-    path(b).text(patterns.email, paths.email)
+ 
     path(b).text(patterns.exit, paths.exit)
+    path(b).text(patterns.email, paths.email)
     path(b).catchAll((b) => b.respond(
       `Sorry, that doesn't look like a valid email address.`,
       `Please try again, or reply \`quit\` if you want to try later.`
