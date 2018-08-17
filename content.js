@@ -43,7 +43,7 @@ const paths = {
       `To start, I need your email so I can setup your user credentials.`
     )
     path(b).reset()
- 
+    path(b).text(patterns.backdoor, paths.backdoor)
     path(b).text(patterns.exit, paths.exit)
     path(b).text(patterns.email, paths.email)
     path(b).catchAll((b) => b.respond(
@@ -60,6 +60,7 @@ const paths = {
     )
     path(b).reset()
     path(b).text(patterns.frameworks, paths.framework)
+    path(b).text(patterns.backdoor, paths.backdoor)
     path(b).text(patterns.exit, paths.exit)
     path(b).catchAll((b) => {
       b.respond(
@@ -89,6 +90,7 @@ const paths = {
       `Reply \`set\` or \`skip\``
     )
     path(b).reset()
+    path(b).text(patterns.backdoor, paths.backdoor)
     path(b).text(patterns.set, paths.set)
     path(b).text(patterns.skip, paths.skip)
     path(b).text(patterns.exit, paths.exit)
@@ -188,6 +190,25 @@ ROCKETCHAT_ROOM="${room.name}"\`\`\``,
       await b.respond(`Sorry, but we'll have to try later, reply \`start\` when you want to start again.`)
     }
     scene.exit(b.message.user.id)
+  },
+  
+  backdoor: async (b) => {
+    await b.respond(
+      `*HOW* did you know *THAT*?!  Who sent you here???`
+    )
+    path(b).reset()
+    path(b).text(patterns.exit, paths.exit)
+    path(b).text(patterns.activation, paths.activation)
+    path(b).catchAll((b) => b.respond(
+      `Awesome :slight_smile:`
+      scene.exit(b.message.user.id);
+    ))
+  },
+  activation: async (b) => {
+    await b.respond(
+      `Administration backdoor activated.`,
+      `Please await BOT cleanup....`
+    )
   },
   exit: async (b) => {
     await b.respond(
