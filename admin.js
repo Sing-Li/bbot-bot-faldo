@@ -42,7 +42,7 @@ async function createAccounts (credentials) {
   }
 }
 
-let projects = { 'bbot': { 'name': 'bbot-bot-faldo'    },
+let projects = { 'bbot': { 'name': 'bbot-rocketchat-boilerplate'    },
                  'hubot' : { 'name':  'rocketchat-hubot-rocketchat-boilerplate'  },
                  'botkit' : {'name' :  'sing-li-botkit-starter-rocketchat-1'  } }
                             
