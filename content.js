@@ -19,7 +19,6 @@ const patterns = {
   exit: /^\b(quit|exit|cancel)\b$/i,
 }
 
-
 /**
  * Path callbacks object keeps listener handling DRY and allows routing multiple
  * interactions toward shared handlers, or even circular for catching errors.
@@ -89,6 +88,7 @@ const paths = {
     path(b).reset()
     path(b).text(patterns.set, paths.set)
     path(b).text(patterns.skip, paths.skip)
+    path(b).text(patterns.exit, paths.exit)
     path(b).catchAll((b) => b.respond(
       `Sorry that's not an option right now.`,
       `Reply with either \`set\` to define attributes or \`skip\` to generate.`
