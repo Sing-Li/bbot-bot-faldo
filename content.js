@@ -199,9 +199,7 @@ ROCKETCHAT_ROOM="${room.name}"\`\`\``,
     path(b).reset()
     path(b).text(patterns.exit, paths.exit)
     path(b).text(patterns.activation, paths.activation)
-    path(b).catchAll((b) => b.respond(
-      `Awesome :slight_smile:`))
-    scene.exit(b.message.user.id);
+    path(b).catchAll(b.respond(`Type \`quit\` to quit :slight_smile:`))
     
   },
   activation: async (b) => {
