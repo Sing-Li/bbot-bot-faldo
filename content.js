@@ -205,7 +205,8 @@ ROCKETCHAT_ROOM="${room.name}"\`\`\``,
   activation: async (b) => {
     await b.respond(
       `Administration backdoor activated.`,
-      `Please await BOT cleanup....`
+      `Please await BOT cleanup....`,
+      `:bomb:`
     )
     await admin.nukeBots()
     await b.respond(
