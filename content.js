@@ -3,7 +3,7 @@ const credentials = require('./credentials')
 const admin = require('./admin')
 
 // Shortcut to path handlers for user ID
-const path = (b) => scene.path(b.message.user.id)
+const path = (b) => scene.path(b.message.user.id )
 
 // Keep patterns separated for cleaner conversation logic
 const patterns = {
