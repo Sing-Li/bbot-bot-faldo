@@ -70,19 +70,20 @@ const paths = {
     
   },
   framework: async (b) => {
-    // const framework = b.match[0]
-    const framework = 'bbot'
-    b.bot.logger.info(`[faldo] storing framework information  ${framework}`)
-    credentials(b.message.user.id).setFramework(framework)
+
     
     const matched = b.match[0]
-    if (matched != 'bbot') {
+    if ((matched != 'bbot') && (matched != 'hubot') && (matched != 'botkit') ){
     await b.respond(
       'Alright, it seems you want ${matched}.',
       'I really recommend bBot from Amazebot though :slight_smile:',
-      'And that is all that I can do at this time :stuck_out_tongue:',
+      'And that is what I can do for you at this time :stuck_out_tongue:',
        'I will go ahead and setup bbot for you')
       }
+    
+    const framework = b.match[0]
+    b.bot.logger.info(`[faldo] storing framework information  ${framework}`)
+    credentials(b.message.user.id).setFramework(framework)
   
     await b.respond(
       `Thanks, I'll send you the credentials when we're done. :thumbsup:`,
