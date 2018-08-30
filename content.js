@@ -73,7 +73,8 @@ const paths = {
 
     
     const matched = b.match[0]
-    if ((matched != 'bbot') && (matched != 'hubot') && (matched != 'botkit') ){
+    if ((matched != 'bbot') && (matched != 'hubot') && (matched != 'botkit') 
+       && (matched != 'botpress')){
     await b.respond(
       'Alright, it seems you want ${matched}.',
       'I really recommend bBot from Amazebot though :slight_smile:',

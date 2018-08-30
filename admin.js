@@ -44,7 +44,9 @@ async function createAccounts (credentials) {
 
 let projects = { 'bbot': { 'name': 'rocketchat-bbot'    },
                  'hubot' : { 'name':  'rocketchat-hubot'  },
-                 'botkit' : {'name' :  'rocketchat-botkit'  } }
+                 'botkit' : {'name' :  'rocketchat-botkit'  },
+                 'botpress' : { 'name' : 'rocketchat-botpress' }
+               }
                             
 
 function getRemix(framework, envvars) {
