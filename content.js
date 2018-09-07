@@ -21,6 +21,7 @@ const patterns = {
   activation: /\bgabriel\sengel\b$/i
 }
 
+
 /**
  * Path callbacks object keeps listener handling DRY and allows routing multiple
  * interactions toward shared handlers, or even circular for catching errors.
