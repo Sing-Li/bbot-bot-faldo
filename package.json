@@ -14,7 +14,7 @@
     ]
   },
   "dependencies": {
-    "bbot": "^0.1.2",
+    "bbot": "^1.2.0",
     "email-addresses": "^3.0.1",
     "generate-password": "^1.4.0",
     "random-words": "^1.1.0",

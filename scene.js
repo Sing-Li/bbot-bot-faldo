@@ -13,7 +13,7 @@ class Scene {
   setup (bot) {
     this.bot = bot
     this.engaged = {}
-    bot.hearMiddleware(async (b, next, done) => {
+    bot.middleware.hear(async (b, next, done) => {
       const uId = b.message.user.id
       if (this.isEngaged(uId) && b.scope === 'global') {
         b.ignore()
